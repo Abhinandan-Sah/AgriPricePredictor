@@ -1,7 +1,7 @@
 import './App.css'
 import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 // import GoogleLogin from './GoogleLogin'
-import Dashboard from './Dashboard'
+import Dashboard from './components/Dashboard'
 import PageNotFound from './PageNotFound'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { useState } from 'react'
