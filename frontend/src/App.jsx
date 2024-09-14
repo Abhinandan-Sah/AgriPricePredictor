@@ -1,13 +1,15 @@
 import './App.css'
 import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 // import GoogleLogin from './GoogleLogin'
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/Dashboard/Dashboard'
 import PageNotFound from './PageNotFound'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { useState } from 'react'
 import RefreshHandler from './RefreshHandler'
 import Login from './Login'
 import GoogleLogin from './GoogleLogin'
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
