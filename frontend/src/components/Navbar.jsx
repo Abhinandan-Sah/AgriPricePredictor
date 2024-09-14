@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({ userInfo, handleSignout }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center p-4 bg-green-500">
-        <div className="text-white text-2xl font-bold">
+    <div className='bg-green-500'>
+      <div className="flex justify-between items-center p-4  mx-10">
+        <div className="flex justify-center items-center gap-3 text-white text-2xl font-bold">
           <img src="/Logo_Main.png" alt="Logo" className="h-8" />
+          <h1 className="hidden lg:block text-xl font-bold">AgriPricePredictor</h1>
         </div>
-        <div className="hidden md:flex gap-2 text-slate-100 text-lg font-semibold">
-          <Link to=""><li>Home</li></Link>
-          <Link to=""><li>Crop Price</li></Link>
-          <Link to=""><li>Market Price</li></Link>
-          <Link to=""><li>About</li></Link>
+        <div className="hidden md:flex gap-6 text-slate-100 text-lg font-semibold">
+          <Link to=""><li className='list-none'>Home</li></Link>
+          <Link to=""><li className='list-none'>Crop Price</li></Link>
+          <Link to=""><li className='list-none'>Market Price</li></Link>
+          <Link to=""><li className='list-none'>About</li></Link>
         </div>
         <div className="hidden md:flex gap-2">
           <div className="flex items-center">
