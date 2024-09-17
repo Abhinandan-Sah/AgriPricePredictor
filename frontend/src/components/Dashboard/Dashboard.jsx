@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Layout from '../Layout/Layout';
-import HeroSection from './HeroSection';
 import Stats from './Stats';
 import BivariateAnalysis from './BivariateAnalysis';
 import CategoricalAnalysis from './CategoricalAnalysis';
@@ -24,7 +23,6 @@ const Dashboard = () => {
   
   return (
     <Layout>
-      <HeroSection />
       {/* <PredictForm /> */}
         {/* <Stats /> */}
         <div className="mb-4">
