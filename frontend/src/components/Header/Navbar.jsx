@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-green-500 sticky">
+    <div className="bg-green-700 sticky">
       <div className="flex justify-between items-center p-4  md:mx-8">
         <div className="flex justify-center items-center gap-3 text-white text-2xl font-bold">
           <img src="/Logo_Main.png" alt="Logo" className="h-8" />

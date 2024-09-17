@@ -1,5 +1,5 @@
 import Navbar from "../Header/Navbar";
-// import Footer from "../Footer/Footer";
+import Footer from "../Footer/Footer";
 import PropTypes from "prop-types";
 
 const Layout = ({ children }) => {
@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

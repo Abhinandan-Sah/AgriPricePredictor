@@ -4,6 +4,8 @@ import Stats from './Stats';
 import BivariateAnalysis from './BivariateAnalysis';
 import CategoricalAnalysis from './CategoricalAnalysis';
 import Heatmaps from './Heatmaps';
+import HeroSection from './HeroSection';
+import PriceForcast from '../PriceForecast/PriceForcast';
 
 const Dashboard = () => {
   const components = {
@@ -23,6 +25,8 @@ const Dashboard = () => {
   
   return (
     <Layout>
+      <HeroSection />
+      <PriceForcast />
       {/* <PredictForm /> */}
         {/* <Stats /> */}
         <div className="mb-4">
@@ -45,4 +49,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Dashboard;
