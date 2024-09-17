@@ -26,7 +26,7 @@ const BivariateAnalysis = () => {
         bivariate_analysis
       </button> */}
       {loading ? (
-        <Shimmer />
+        <Shimmer  />
       ) : (
         data !== null && (
           <div className="flex gap-3 flex-wrap w-full">

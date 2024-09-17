@@ -27,7 +27,7 @@ const Visualization = () => {
 
       {/* <PredictForm /> */}
         {/* <Stats /> */}
-        <div className='flex justify-center items-center mt-5'>
+        <div className='flex justify-center items-center flex-col mt-5'>
         <div className="mb-4 ">
         <label htmlFor="component-select" className="mr-2">Select Component:</label>
         <select

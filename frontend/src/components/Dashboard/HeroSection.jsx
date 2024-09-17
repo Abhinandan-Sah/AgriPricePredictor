@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
@@ -9,20 +7,26 @@ import { Link } from 'react-router-dom'
 
 const carouselItems = [
   {
-    image: "https://res.cloudinary.com/dl4rdt9w0/image/upload/v1726329891/AgriPricePredictor/snmrhfcs4yhpyuhh3won.png"
+    image: "https://res.cloudinary.com/dl4rdt9w0/image/upload/v1726591322/AgriPricePredictor/fd4pgnp3olmrdrajcqfx.jpg"
   },
   {
-    image: "https://media.istockphoto.com/id/1557875324/photo/wheat-grain-in-a-hand-after-good-harvest-of-successful-farmer.jpg?s=1024x1024&w=is&k=20&c=YVh5klMmYkKZ50tbonKDO_HCJsQCy80o8qLzuoVa2hY="
+    image: "https://res.cloudinary.com/dl4rdt9w0/image/upload/v1726591322/AgriPricePredictor/sj6ixg0aczizxezspwd0.jpg"
   },
   {
-    image: "https://img.freepik.com/free-photo/detail-rice-plant-sunset-valencia-with-plantation-out-focus-rice-grains-plant-seed_181624-25838.jpg"
+    image: "https://res.cloudinary.com/dl4rdt9w0/image/upload/v1726591322/AgriPricePredictor/pfechjmunsnmm1itenpk.jpg"
+  },
+  {
+    image: "https://res.cloudinary.com/dl4rdt9w0/image/upload/v1726591322/AgriPricePredictor/d7tegvpzvyc2yxjvwzov.jpg"
+  },
+  {
+    image: "https://res.cloudinary.com/dl4rdt9w0/image/upload/v1726591322/AgriPricePredictor/gt2ioubhv3m2gusui9lk.jpg"
   }
 ]
 
 const cards = [
   {
     title: "Price Monitoring",
-    description: "Daily tracking of 22 essential food commodities"
+    description: "Daily tracking of essential food commodities"
   },
   {
     title: "Buffer Stock Management",
@@ -67,9 +71,9 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative bg-gradient-to-b from-green-50 to-blue-50 py-8 sm:py-12 md:py-16 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-green-50 to-blue-50 py-5 sm:py-8 md:py-13 overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div 
+        {/* <motion.div 
           className="mb-8 sm:mb-12 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -86,7 +90,7 @@ export default function HeroSection() {
           >
             AgriPrice AI: Predicting the Future of Agriculture
           </motion.h1>
-        </motion.div>
+        </motion.div> */}
 
         <div className="relative h-[200px] sm:h-[300px] md:h-[400px] mb-8 sm:mb-12 overflow-hidden rounded-lg shadow-xl">
           {carouselItems.map((item, index) => (
