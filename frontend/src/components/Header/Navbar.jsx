@@ -41,8 +41,8 @@ export default function Navbar() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <NavLink href="/dashboard" icon={<Home className="w-4 h-4 mr-1" />}>Home</NavLink>
-              <NavLink href="/predict" icon={<TrendingUp className="w-4 h-4 mr-1" />}>Crop Price</NavLink>
-              <NavLink href="/visualization" icon={<ShoppingCart className="w-4 h-4 mr-1" />}>Market Price</NavLink>
+              <NavLink href="/predict" icon={<TrendingUp className="w-4 h-4 mr-1" />}>Price Forecast</NavLink>
+              <NavLink href="/visualization" icon={<ShoppingCart className="w-4 h-4 mr-1" />}>Visualization</NavLink>
               <NavLink href="/about" icon={<Info className="w-4 h-4 mr-1" />}>About</NavLink>
             </div>
           </div>
