@@ -4,4 +4,3 @@ node_modules
 .env.local
 .env.staging
 .venv
-Flask
