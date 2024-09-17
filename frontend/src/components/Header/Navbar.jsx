@@ -87,7 +87,7 @@ const Navbar = () => {
       </div>
 
       {sidebarOpen && (
-        <div className="md:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
+        <div className="md:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-30">
           <div className="fixed inset-y-0 left-0 w-64 bg-white p-4">
             <button className="text-black" onClick={toggleSidebar}>
               ✕

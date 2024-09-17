@@ -9,9 +9,11 @@ import RefreshHandler from './RefreshHandler'
 import Login from './Login'
 import GoogleLogin from './GoogleLogin'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import PredictForm from './components/Dashboard/PredictForm'
+// import PredictForm from './components/Dashboard/PredictForm'
 import About from './components/About/About'
 import Visualization from './components/Visualization/Visualization'
+import RetrainModel from './components/Retrain Model/RetrainModel'
+import PriceForcast from './components/PriceForecast/PriceForcast'
 
 
 function App() {
@@ -49,7 +51,8 @@ function App() {
         {/* Crops Prediction Route */}
         <Route path="/about" element={<PrivateRoute element={<About />} />} />
         <Route path="/visualization" element={<PrivateRoute element={<Visualization />} />} />
-        <Route path="/predict" element={<PrivateRoute element={<PredictForm />} />} />
+        <Route path="/predict" element={<PrivateRoute element={<PriceForcast />} />} />
+        <Route path="/retrain" element={<PrivateRoute element={<RetrainModel />} />} />
 
         {/* If user to another path other than mention above path then it will redirect to dashboard */}
         <Route path="/*" element={<PageNotFound />} />

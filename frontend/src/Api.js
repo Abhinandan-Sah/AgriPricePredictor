@@ -79,6 +79,15 @@ export const heatmaps = async () => {
 export const stats = async () => {
   try {
     const response = await flask.get("/stats");
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+export const retrain_model = async () => {
+  try {
+    const response = await flask.post("/retrain");
     console.log("inside Api");
     console.log(response.data);
     return response.data;

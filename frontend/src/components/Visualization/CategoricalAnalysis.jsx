@@ -19,12 +19,12 @@ const CategoricalAnalysis = () => {
 
   return (
     <div>
-      <button
+      {/* <button
         className="bg-blue-400 text-black font-semibold px-4 py-2 rounded-lg"
         onClick={handleClick}
       >
         Categorical Analysis
-      </button>
+      </button> */}
       <div>
         {plotUrls.map((url, index) => (
           <img

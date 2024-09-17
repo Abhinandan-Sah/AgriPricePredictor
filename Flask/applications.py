@@ -192,7 +192,7 @@ def predict():
     if request.method == 'POST':
         # Retrieve JSON data from the request
         data = request.get_json()
-
+        print("Success inside predict ")
         # Extract data from JSON
         date = data.get('date')
         state = data.get('state')
@@ -277,42 +277,43 @@ def predict():
     # Configure logging
 # logging.basicConfig(level=logging.DEBUG)
 
-@app.route('/retrain', methods=['GET'])
+@app.route('/retrain', methods=['POST'])
 def retrain_model():
     # Get new data for retraining
-    # new_data = request.get_json()
+    print(f"Success inside retrain")
+    new_data = request.get_json()
     #new_data = {Date: "avi",State:"Maharashtra",City:"Pune",Crop Type:"Wheat",Season:"Kharif",Temperature (°C): 30,Rainfall (mm): 100,Supply Volume (tons): 3500.9,Demand Volume (tons): 1300.6,Transportation Cost (₹/ton): 500,Fertilizer Usage (kg/hectare): 50,Pest Infestation (0-1): 0.2,Market Competition (0-1): 0.5,Price (₹/ton): 16}
-    new_data = [{
-        "date":"2023-06-01",
-        "State":"Maharashtra",
-        "City": "Pune",
-        "Crop Type":"Wheat",
-        "Season": "Kharif",
-        "Temperature (°C)":30,
-        "Rainfall (mm)":100,
-        "Supply Volume (tons)":3500.9,
-        "Demand Volume (tons)":1300.6,
-        "Transportation Cost (₹/ton)":500,
-        "Fertilizer Usage (kg/hectare)":50,
-        "Pest Infestation (0-1)": 0.2,
-        "Market Competition (0-1)":0.5,
-        "Price (₹/ton)":16
-    },{
-            "date":"2023-07-01",
-            "State":"Maharashtra",
-            "City": "Mumbai",
-            "Crop Type":"Rice",
-            "Season": "Rabi",
-            "Temperature (°C)":28,
-            "Rainfall (mm)":120,
-            "Supply Volume (tons)":3000.5,
-            "Demand Volume (tons)":1500.3,
-            "Transportation Cost (₹/ton)":520,
-            "Fertilizer Usage (kg/hectare)":45,
-            "Pest Infestation (0-1)": 0.3,
-            "Market Competition (0-1)":0.6,
-            "Price (₹/ton)":18
-        }]
+    # new_data = [{
+    #     "date":"2023-06-01",
+    #     "State":"Maharashtra",
+    #     "City": "Pune",
+    #     "Crop Type":"Wheat",
+    #     "Season": "Kharif",
+    #     "Temperature (°C)":30,
+    #     "Rainfall (mm)":100,
+    #     "Supply Volume (tons)":3500.9,
+    #     "Demand Volume (tons)":1300.6,
+    #     "Transportation Cost (₹/ton)":500,
+    #     "Fertilizer Usage (kg/hectare)":50,
+    #     "Pest Infestation (0-1)": 0.2,
+    #     "Market Competition (0-1)":0.5,
+    #     "Price (₹/ton)":16
+    # },{
+    #         "date":"2023-07-01",
+    #         "State":"Maharashtra",
+    #         "City": "Mumbai",
+    #         "Crop Type":"Rice",
+    #         "Season": "Rabi",
+    #         "Temperature (°C)":28,
+    #         "Rainfall (mm)":120,
+    #         "Supply Volume (tons)":3000.5,
+    #         "Demand Volume (tons)":1500.3,
+    #         "Transportation Cost (₹/ton)":520,
+    #         "Fertilizer Usage (kg/hectare)":45,
+    #         "Pest Infestation (0-1)": 0.3,
+    #         "Market Competition (0-1)":0.6,
+    #         "Price (₹/ton)":18
+    #     }]
 
     # Convert new data to DataFrame
     new_data_df = pd.DataFrame(new_data)
