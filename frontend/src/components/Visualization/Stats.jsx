@@ -20,12 +20,12 @@ const Stats = () => {
   return (
     <div>
     <h1>Statistics</h1>
-    <button
+    {/* <button
       className="bg-blue-400 text-black font-semibold px-4 py-2 rounded-lg"
       onClick={fetchStatsData}
     >
       Refresh Stats
-    </button>
+    </button> */}
     <h1>Summary Statistics</h1>
     <div
       className="mt-4 border border-black"

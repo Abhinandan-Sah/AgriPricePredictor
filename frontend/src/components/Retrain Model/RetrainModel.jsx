@@ -9,8 +9,8 @@ import Layout from '../Layout/Layout';
 const sampleData = `{
   "columns": ["date", "State", "City", "Crop Type", "Season", "Temperature (°C)", "Rainfall (mm)", "Supply Volume (tons)", "Demand Volume (tons)", "Transportation Cost (₹/ton)", "Fertilizer Usage (kg/hectare)", "Pest Infestation (0-1)", "Market Competition (0-1)", "Price (₹/ton)"],
   "values": [
-    ["2023-06-01", "Maharashtra", "Pune", "Wheat", "Kharif", 30, 100, 3500.9, 1300.6, 500, 50, 0.2, 0.5, 16000],
-    ["2023-06-02", "Gujarat", "Ahmedabad", "Rice", "Kharif", 32, 120, 4000.5, 1500.2, 550, 60, 0.3, 0.6, 18000]
+    [],
+    []
   ]
 }`;
 

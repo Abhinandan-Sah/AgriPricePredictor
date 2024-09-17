@@ -22,12 +22,12 @@ const Heatmaps = () => {
 
   return (
     <div>
-        <button
+        {/* <button
         className="bg-blue-400 text-black font-semibold px-4 py-2 rounded-lg"
         onClick={fetchHeatmapData}
       >
         Categorical Analysis
-      </button>
+      </button> */}
       <div>
         {heatmapData.heatmap_price && (
           <img
@@ -38,7 +38,6 @@ const Heatmaps = () => {
         )}
       </div>
       <div>
-        <h2>Transportation Cost Heatmap</h2>
         {heatmapData.heatmap_transport_cost && (
           <img
             src={heatmapData.heatmap_transport_cost}
