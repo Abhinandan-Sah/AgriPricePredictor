@@ -9,6 +9,7 @@ import RefreshHandler from './RefreshHandler'
 import Login from './Login'
 import GoogleLogin from './GoogleLogin'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import PredictForm from './components/Dashboard/PredictForm'
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
   const GoogleAuthWrapper= ()=>{
     return(
-      <div className='relative'>
+     <div className='relative'>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}  >
       <div className='absolute top-[77%] left-[55%]'>
       <GoogleLogin  />
@@ -24,6 +25,7 @@ function App() {
       <Login />
     </GoogleOAuthProvider>
     </div>
+
     )
   }
 
@@ -41,6 +43,11 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
+
+        {/* Crops Prediction Route */}
+        <Route path="/crops" element={<PrivateRoute element={<Dashboard />} />} />
+        <Route path="/predict" element={<PrivateRoute element={<PredictForm />} />} />
+
         {/* If user to another path other than mention above path then it will redirect to dashboard */}
         <Route path="/*" element={<PageNotFound />} />
       </Routes>

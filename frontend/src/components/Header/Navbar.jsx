@@ -11,15 +11,19 @@ const Navbar = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  useEffect(() => {
+  }, [userInfo]);
 
   const fetchData = async () => {
     const data = localStorage.getItem("user-info");
     const json = JSON.parse(data);
     setUserInfo(json);
   };
+
   const handleSignout = () => {
+      localStorage.removeItem("user-info");
+    setUserInfo(null);  // Update the state to remove the user information
     toast.success("Signout Successfully");
-    localStorage.removeItem("user-info");
     navigate("/login");
   };
 
@@ -37,11 +41,11 @@ const Navbar = () => {
           </h1>
         </div>
         <div className="hidden md:flex gap-6 text-slate-100 text-lg font-semibold">
-          <Link to="">
+          <Link to="/dashboard">
             <li className="list-none">Home</li>
           </Link>
-          <Link to="">
-            <li className="list-none">Crop Price</li>
+          <Link to="/predict">
+            <li className="list-none">Price Forecasting</li>
           </Link>
           <Link to="">
             <li className="list-none">Market Price</li>
@@ -51,20 +55,31 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden md:flex gap-2">
-          <div className="flex items-center">
-            <img
-              className="rounded-full h-6 w-6"
-              src={userInfo?.image}
-              alt={userInfo?.name}
-            />
-            <h2 className="ml-2">{userInfo?.name}</h2>
-          </div>
-          <button
-            className="border-black px-2 bg-orange-400 text-white font-semibold rounded-lg"
-            onClick={handleSignout}
-          >
-            Sign Out
-          </button>
+        {userInfo ? (
+            <div className="flex items-center">
+              <img
+                className="rounded-full h-6 w-6"
+                src={userInfo?.image}
+                alt={userInfo?.name}
+              />
+              <h2 className="ml-2">{userInfo?.name}</h2>
+              <button
+                className="border-black px-2 bg-orange-400 text-white font-semibold rounded-lg ml-4"
+                onClick={handleSignout}
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <div className="flex  gap-2">
+              <button className="border-black px-2 bg-blue-400 text-white font-semibold rounded-lg">
+                Login
+              </button>
+              <button className="border-black px-2 bg-green-400 text-white font-semibold rounded-lg">
+                Sign In
+              </button>
+            </div>
+          )}
         </div>
         <button className="md:hidden text-white" onClick={toggleSidebar}>
           ☰

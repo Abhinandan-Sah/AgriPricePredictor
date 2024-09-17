@@ -8,11 +8,8 @@ const GoogleLogin = () => {
   const navigate = useNavigate();
   const responseGoogle = async (authResult) => {
     try {
-      console.log("inside google Login");
       if (authResult["code"]) {
         const result = await googleAuth(authResult["code"]);
-        console.log("This is result of google auth -> ");
-        console.log(result);
         const { name, email, image } = result.user;
         const { token } = result;
         const obj = { name, email, image, token };
