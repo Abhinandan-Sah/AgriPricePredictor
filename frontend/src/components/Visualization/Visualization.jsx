@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import Layout from '../Layout/Layout';
-import Stats from '../Visualization/Stats';
-import BivariateAnalysis from '../Visualization/BivariateAnalysis';
-import CategoricalAnalysis from '../Visualization/CategoricalAnalysis';
-import Heatmaps from '../Visualization/Heatmaps';
-import HeroSection from './HeroSection';
-// import PriceForcast from '../PriceForecast/PriceForcast';
+import Stats from './Stats';
+import BivariateAnalysis from './BivariateAnalysis';
+import CategoricalAnalysis from './CategoricalAnalysis';
+import Heatmaps from './Heatmaps';
 
-const Dashboard = () => {
+
+const Visualization = () => {
   const components = {
     
     Stats: <Stats />,
@@ -25,8 +24,7 @@ const Dashboard = () => {
   
   return (
     <Layout>
-      <HeroSection />
-      {/* <PriceForcast /> */}
+
       {/* <PredictForm /> */}
         {/* <Stats /> */}
         <div className="mb-4">
@@ -49,4 +47,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default Visualization;

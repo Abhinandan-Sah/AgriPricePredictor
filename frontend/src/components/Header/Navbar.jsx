@@ -47,10 +47,10 @@ const Navbar = () => {
           <Link to="/predict">
             <li className="list-none">Price Forecasting</li>
           </Link>
-          <Link to="">
-            <li className="list-none">Market Price</li>
+          <Link to="/visualization">
+            <li className="list-none">Visualization</li>
           </Link>
-          <Link to="">
+          <Link to="/about">
             <li className="list-none">About</li>
           </Link>
         </div>

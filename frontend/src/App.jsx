@@ -10,6 +10,8 @@ import Login from './Login'
 import GoogleLogin from './GoogleLogin'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import PredictForm from './components/Dashboard/PredictForm'
+import About from './components/About/About'
+import Visualization from './components/Visualization/Visualization'
 
 
 function App() {
@@ -45,7 +47,8 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
 
         {/* Crops Prediction Route */}
-        <Route path="/crops" element={<PrivateRoute element={<Dashboard />} />} />
+        <Route path="/about" element={<PrivateRoute element={<About />} />} />
+        <Route path="/visualization" element={<PrivateRoute element={<Visualization />} />} />
         <Route path="/predict" element={<PrivateRoute element={<PredictForm />} />} />
 
         {/* If user to another path other than mention above path then it will redirect to dashboard */}

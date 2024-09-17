@@ -57,7 +57,7 @@ function PredictForm() {
             value={formData.date}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -71,7 +71,7 @@ function PredictForm() {
             value={formData.state}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -85,7 +85,7 @@ function PredictForm() {
             value={formData.city}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -99,7 +99,7 @@ function PredictForm() {
             value={formData.crop_type}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -113,7 +113,7 @@ function PredictForm() {
             value={formData.season}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -128,7 +128,7 @@ function PredictForm() {
             value={formData.temperature}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -143,7 +143,7 @@ function PredictForm() {
             value={formData.rainfall}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -158,7 +158,7 @@ function PredictForm() {
             value={formData.supply_volume}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -173,7 +173,7 @@ function PredictForm() {
             value={formData.demand_volume}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -188,7 +188,7 @@ function PredictForm() {
             value={formData.transport_cost}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -203,7 +203,7 @@ function PredictForm() {
             value={formData.fertilizer_usage}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md "
           />
         </div>
         <div>
@@ -218,7 +218,7 @@ function PredictForm() {
             value={formData.pest_infestation}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
         <div>
@@ -233,7 +233,7 @@ function PredictForm() {
             value={formData.market_competition}
             onChange={handleChange}
             required
-            className="border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+            className="border border-black py-2 pl-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
           />
         </div>
 

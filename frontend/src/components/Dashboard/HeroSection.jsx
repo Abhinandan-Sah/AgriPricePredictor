@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Link } from 'react-router-dom'
 
 const carouselItems = [
   {
@@ -42,6 +43,13 @@ export default function HeroSection() {
     }, 5000)
     return () => clearInterval(timer)
   }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Optional: for smooth scrolling
+    });
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselItems.length)
@@ -141,13 +149,14 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Button 
+          <Link to="/predict" onClick={scrollToTop}><Button 
             size="lg" 
             className="bg-green-600 text-white hover:bg-green-700 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
             onClick={scrollToPredictionForm}
           >
             Explore Price Predictions
           </Button>
+          </Link>
         </motion.div>
       </div>
     </section>
