@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4">
               <NavLink href="/dashboard" icon={<Home className="w-4 h-4 mr-1" />}>Home</NavLink>
               <NavLink href="/predict" icon={<TrendingUp className="w-4 h-4 mr-1" />}>Price Forecast</NavLink>
-              <NavLink href="/visualization" icon={<ShoppingCart className="w-4 h-4 mr-1" />}>Visualization</NavLink>
+              <NavLink href="/visualization" icon={<ShoppingCart className="w-4 h-4 mr-1" />}>Market Visualization</NavLink>
               <NavLink href="/about" icon={<Info className="w-4 h-4 mr-1" />}>About</NavLink>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   </Link>
                   <Link href="/visualization" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
                     <ShoppingCart className="w-4 h-4 mr-2" />
-                    Visualization
+                    Market Visualization
                   </Link>
                   <Link href="/about" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
                     <Info className="w-4 h-4 mr-2" />
