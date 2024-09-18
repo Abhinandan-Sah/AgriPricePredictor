@@ -14,6 +14,7 @@ import About from './components/About/About'
 import Visualization from './components/Visualization/Visualization'
 import RetrainModel from './components/Retrain Model/RetrainModel'
 import PriceForcast from './components/PriceForecast/PriceForcast'
+import RecommendationSystem from './components/Recommendation System/RecommendationSystem'
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/visualization" element={<PrivateRoute element={<Visualization />} />} />
         <Route path="/predict" element={<PrivateRoute element={<PriceForcast />} />} />
         <Route path="/retrain" element={<PrivateRoute element={<RetrainModel />} />} />
+        <Route path="/recommendation" element={<PrivateRoute element={<RecommendationSystem />} />} />
 
         {/* If user to another path other than mention above path then it will redirect to dashboard */}
         <Route path="/*" element={<PageNotFound />} />

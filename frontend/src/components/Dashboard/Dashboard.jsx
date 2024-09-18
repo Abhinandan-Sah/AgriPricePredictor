@@ -8,7 +8,7 @@ const Dashboard = () => {
   
   return (
     <Layout>
-      <Marquee />
+      {/* <Marquee /> */}
       <HeroSection />
       
     </Layout>

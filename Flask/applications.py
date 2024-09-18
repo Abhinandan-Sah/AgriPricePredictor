@@ -337,7 +337,27 @@ def predict():
 
         # Return the prediction result
         # result = {"predicted_price": final_pred[0]}
-        result = {"predicted_price": predicted_price}
+        # result = {"predicted_price": predicted_price}
+
+        import matplotlib.pyplot as plt
+        fig, ax = plt.subplots()
+        ax.plot(prophet_pred['ds'], prophet_pred['yhat'])
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Price')
+        ax.set_title('Predicted Price Over Time')
+
+        # Convert the graph to a base64-encoded image string
+        from io import BytesIO
+        buf = BytesIO()
+        fig.savefig(buf, format='png')
+        img_str = base64.b64encode(buf.getvalue()).decode('utf-8')
+
+        # Add the graph to the result JSON
+        result = {"predicted_price": predicted_price, "graph": img_str}
+
+        # forecast=prophet_model.plot(prophet_pred)
+        # fig=forecast.get_figure()
+        # result = {"predicted_price": predicted_price, "fig": fig}
 
     return jsonify(result)
 
@@ -398,80 +418,42 @@ def retrain_model():
         print(f"JSON Decode Error: {e}")  # Capture decoding errors
         return jsonify({"error": "Invalid JSON data"}), 400
     return jsonify({'message': 'Data received successfully'})
-    # Get new data for retraining
-    # new_data = [{
-    #     "date":"2023-06-01",
-    #     "State":"Maharashtra",
-    #     "City": "Pune",
-    #     "Crop Type":"Wheat",
-    #     "Season": "Kharif",
-    #     "Temperature (°C)":30,
-    #     "Rainfall (mm)":100,
-    #     "Supply Volume (tons)":3500.9,
-    #     "Demand Volume (tons)":1300.6,
-    #     "Transportation Cost (₹/ton)":500,
-    #     "Fertilizer Usage (kg/hectare)":50,
-    #     "Pest Infestation (0-1)": 0.2,
-    #     "Market Competition (0-1)":0.5,
-    #     "Price (₹/ton)":16
-    # },{
-    #         "date":"2023-07-01",
-    #         "State":"Maharashtra",
-    #         "City": "Mumbai",
-    #         "Crop Type":"Rice",
-    #         "Season": "Rabi",
-    #         "Temperature (°C)":28,
-    #         "Rainfall (mm)":120,
-    #         "Supply Volume (tons)":3000.5,
-    #         "Demand Volume (tons)":1500.3,
-    #         "Transportation Cost (₹/ton)":520,
-    #         "Fertilizer Usage (kg/hectare)":45,
-    #         "Pest Infestation (0-1)": 0.3,
-    #         "Market Competition (0-1)":0.6,
-    #         "Price (₹/ton)":18
-    #     }]
-
-    # Convert new data to DataFrame
-    # new_data_df = pd.DataFrame(new_data)
-    # new_data_df["date"] = pd.to_datetime(new_data_df["date"], format="%Y-%m-%d")
     
-    # new_data_df["ds"] =new_data_df["date"]
-  
-    # new_data_df["y"] = new_data_df["Price (₹/ton)"]
+@app.route('/recommendations', methods=['POST'])
+def recommendations():
+    data = request.get_json()
+    crop_type = data.get('crop_type')
+    state = data.get('state')
+    city = data.get('city')
 
-   
-    # # Split features and target for RandomForest training
-    # X_rf = new_data_df.drop(columns=["Price (₹/ton)", "date", "ds",'y'])
-    # y_rf = new_data_df["Price (₹/ton)"]
-   
-    # # Retrain RandomForest model
-    # rf_pipe.fit(X_rf, y_rf)
+    if not all([crop_type, state, city]):
+        return jsonify({'error': 'Missing input parameters'}), 400
 
-    # # Retrain Prophet model
-    # prophet_model = Prophet()
-    # prophet_model.fit(new_data_df[['ds', 'y']])
+    # Load data
+    df = pd.read_csv('Model/crop_price.csv')
 
-    # # Generate predictions using the retrained models
-    # rf_preds = rf_pipe.predict(X_rf)
-    # prophet_preds = prophet_model.predict(new_data_df[['ds']])
+    # Filter data
+    filtered_df = df[(df['Crop Type'] == crop_type) & (df['State'] == state) & (df['City'] == city)]
 
-    # # Combine the predictions for final model training
-    # combined_features = np.column_stack((rf_preds,prophet_preds['yhat'].values))
+    if filtered_df.empty:
+        return jsonify({'error': 'No data found for the given location and crop'}), 404
 
-    # # Retrain the final model (e.g., Linear Regression or other)
-    # final_model.fit(combined_features, y_rf)
+    # Use the existing predict function to get the predicted price
+    prediction_response = predict()
+    predicted_price = prediction_response.get_json()['predicted_price']
 
-    # # Dump (save) the models after retraining
-    # with open("Model/RandomForest.pkl", "wb") as f:
-    #     pickle.dump(rf_pipe, f)
+    # Generate recommendations
+    historical_avg = filtered_df['Price (₹/ton)'].mean()
+    if predicted_price > historical_avg:
+        recommendation = f'Sell your {crop_type} at the predicted price of ₹{predicted_price:.2f} (higher than historical average of ₹{historical_avg:.2f}).'
+    else:
+        recommendation = f'Hold onto your {crop_type} for better prices (predicted price of ₹{predicted_price:.2f} is lower than historical average of ₹{historical_avg:.2f}).'
 
-    # with open("Model/Meta_prophet.joblib", "wb") as f:
-    #     dump(prophet_model, f)
-
-    # with open("Model/final_model.pkl", "wb") as f:
-    #     pickle.dump(final_model, f)
-
-    # return jsonify({"message": "Models retrained and saved successfully!"})
+    return jsonify({
+        'recommendation': recommendation,
+        'predicted_price': predicted_price,
+        'historical_average': historical_avg
+    })
 
 if __name__=="__main__":
     app.run(host="localhost", port=5000, debug=True)

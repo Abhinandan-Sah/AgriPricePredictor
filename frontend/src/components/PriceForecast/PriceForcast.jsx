@@ -13,6 +13,8 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { predictPrice } from "@/Api";
 import Layout from "../Layout/Layout";
+import GraphPrediction from "./GraphPrediction";
+
 
 const statesAndCities = {
   Maharashtra: ["Mumbai", "Pune", "Nagpur"],
@@ -104,8 +106,8 @@ export default function PriceForcast() {
     <Layout>
       <div className="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-4xl">
-        <h1 className="text-3xl font-bold text-center mb-6 text-green-600">
-          Crop Price Data Form
+        <h1 className="text-3xl font-bold text-center mb-2 text-green-600">
+          Price Forecasting Form
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -321,7 +323,11 @@ export default function PriceForcast() {
               The predicted price of the crop is{" "}
               Rs{" "}{predictedPrice?.predicted_price}{" "}per{" "}kg
             </p>
+            <p>{predictedPrice?.fig}</p>
+            <GraphPrediction predictedPrice={predictedPrice?.predicted_price} />
+            <img src={`data:image/png;base64,${predictedPrice?.graph}`} alt="Predicted Price Over Time" />
           </div>
+          
         )}
       </div>
     </div>

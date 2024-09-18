@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-green-600 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-3 lg:px-5">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
@@ -43,6 +43,7 @@ export default function Navbar() {
               <NavLink href="/dashboard" icon={<Home className="w-4 h-4 mr-1" />}>Home</NavLink>
               <NavLink href="/predict" icon={<TrendingUp className="w-4 h-4 mr-1" />}>Price Forecast</NavLink>
               <NavLink href="/visualization" icon={<ShoppingCart className="w-4 h-4 mr-1" />}>Market Visualization</NavLink>
+              <NavLink href="/recommendation">Recommendation System</NavLink>
               <NavLink href="/about" icon={<Info className="w-4 h-4 mr-1" />}>About</NavLink>
             </div>
           </div>

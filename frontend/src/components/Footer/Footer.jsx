@@ -88,7 +88,7 @@ export default function Footer() {
               <a href="#" className="hover:text-green-300">
                 <Facebook />
               </a>
-              <a href="https://www.linkedin.com/in/gouravsittam/" className="hover:text-green-300">
+              <a href="#" className="hover:text-green-300">
                 <Linkedin />
               </a>
             </div>
