@@ -14,6 +14,7 @@ const RefreshHandler = ({setIsAuthenticated}) => {
             if(location.pathname === '/' || location.pathname ==='/login'){
                 navigate('/dashboard', {replace: false});
             }
+            
         }
     }, [location, navigate, setIsAuthenticated]);
 
@@ -21,3 +22,6 @@ const RefreshHandler = ({setIsAuthenticated}) => {
 }
 
 export default RefreshHandler
+
+
+

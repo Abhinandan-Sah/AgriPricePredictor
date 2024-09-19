@@ -77,23 +77,23 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-4">
-                  <Link href="/dashboard" className="flex items-center">
+                  <Link to="/dashboard" className="flex items-center">
                     <Wheat className="h-6 w-6 mr-2" />
                     <span className="text-lg font-bold">AgriPricePredictor</span>
                   </Link>
-                  <Link href="/dashboard" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
+                  <Link to="/dashboard" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
                     <Home className="w-4 h-4 mr-2" />
                     Home
                   </Link>
-                  <Link href="/predict" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
+                  <Link to="/predict" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
                     <TrendingUp className="w-4 h-4 mr-2" />
                     Price Forecast
                   </Link>
-                  <Link href="/visualization" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
+                  <Link to="/visualization" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Market Visualization
                   </Link>
-                  <Link href="/about" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
+                  <Link to="/about" className="flex items-center px-2 py-1 rounded-md hover:bg-gray-100">
                     <Info className="w-4 h-4 mr-2" />
                     About
                   </Link>
@@ -137,3 +137,4 @@ function NavLink({ href, children, icon }) {
     </Link>
   )
 }
+

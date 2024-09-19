@@ -1,107 +1,122 @@
-// 'use client'
-
-// import { useState } from 'react'
-// import { Button } from "@/components/ui/button"
-// import { Input } from "@/components/ui/input"
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
-// export default function CropRecommendations() {
-//   const [cropType, setCropType] = useState('')
-//   const [state, setState] = useState('')
-//   const [city, setCity] = useState('')
-//   const [recommendation, setRecommendation] = useState(null)
-//   const [loading, setLoading] = useState(false)
-//   const [error, setError] = useState('')
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault()
-//     setLoading(true)
-//     setError('')
-//     setRecommendation(null)
-
-// //     try {
-// //       const response = await fetch('/recommendations', {
-// //         method: 'POST',
-// //         headers: {
-// //           'Content-Type': 'application/json',
-// //         },
-// //         body: JSON.stringify({ crop_type: cropType, state, city }),
-// //       })
-
-// //       if (!response.ok) {
-// //         throw new Error('Failed to fetch recommendation')
-// //       }
-
-// //       const data = await response.json()
-// //       setRecommendation(data)
-// //     } catch (err) {
-// //       setError('An error occurred while fetching the recommendation.')
-// //     } finally {
-// //       setLoading(false)
-// //     }
-// //   }
-
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-2xl font-bold mb-4">Crop Price Recommendations</h1>
-//       <form onSubmit={handleSubmit} className="space-y-4">
-//         <Select onValueChange={setCropType} required>
-//           <SelectTrigger>
-//             <SelectValue placeholder="Select Crop Type" />
-//           </SelectTrigger>
-//           <SelectContent>
-//             <SelectItem value="rice">Rice</SelectItem>
-//             <SelectItem value="wheat">Wheat</SelectItem>
-//             <SelectItem value="corn">Corn</SelectItem>
-//             {/* Add more crop types as needed */}
-//           </SelectContent>
-//         </Select>
-//         <Input
-//           type="text"
-//           placeholder="State"
-//           value={state}
-//           onChange={(e) => setState(e.target.value)}
-//           required
-//         />
-//         <Input
-//           type="text"
-//           placeholder="City"
-//           value={city}
-//           onChange={(e) => setCity(e.target.value)}
-//           required
-//         />
-//         <Button type="submit" disabled={loading}>
-//           {loading ? 'Loading...' : 'Get Recommendation'}
-//         </Button>
-//       </form>
-
-//       {error && <p className="text-red-500 mt-4">{error}</p>}
-
-//       {recommendation && (
-//         <Card className="mt-6">
-//           <CardHeader>
-//             <CardTitle>Recommendation</CardTitle>
-//           </CardHeader>
-//           <CardContent>
-//             <p className="mb-2">{recommendation.recommendation}</p>
-//             <p>Predicted Price: ₹{recommendation.predicted_price.toFixed(2)}</p>
-//             <p>Historical Average: ₹{recommendation.historical_average.toFixed(2)}</p>
-//           </CardContent>
-//         </Card>
-//       )}
-//     </div>
-//   )
-// }
-import React from 'react'
-import Layout from '../Layout/Layout'
+import  { useState } from 'react';
+import Layout from '../Layout/Layout';
 
 const RecommendationSystem = () => {
-  return (
-    <Layout >
-        <div>RecommendationSystem</div>
-    </Layout>
-  )
-}
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [recommendation, setRecommendation] = useState(null);
+  const [state, setState] = useState('Maharashtra');
+  const [city, setCity] = useState('Pune');
+  const [cropType, setCropType] = useState('Rice');
 
-export default RecommendationSystem
+  const states = ['Maharashtra', 'Gujarat', 'Rajasthan', 'Punjab'];
+  const cities = ['Pune', 'Mumbai', 'Nagpur', 'Aurangabad'];
+  const cropTypes = ['Rice', 'Wheat', 'Sugarcane', 'Cotton'];
+
+  const sendRecommendationRequest =  () => {
+    // setLoading(true);
+    // setError(null);
+    // try {
+    //   const response = await fetch('recommendation', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ state, city, cropType }),
+    //   });
+    //   const data = await response.json();
+    //   setRecommendation(data);
+    // } catch (err) {
+    //   console.error('Error:', err);
+    //   setError('An error occurred while fetching the recommendation.');
+    // } finally {
+    //   setLoading(false);
+    // }
+    setRecommendation(20)
+  };
+
+  return (
+    <Layout>
+      <div className="container mx-auto p-4 pt-6 md:pt-12">
+        <h1 className="text-2xl font-bold mb-4">Crop Price Recommendations</h1>
+        <form>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="state"
+              >
+                State
+              </label>
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
+                id="state"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+              >
+                {states.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="city"
+              >
+                City
+              </label>
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
+                id="city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              >
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="cropType"
+              >
+                Crop Type
+              </label>
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
+                id="cropType"
+                value={cropType}
+                onChange={(e) => setCropType(e.target.value)}
+              >
+                {cropTypes.map((cropType) => (
+                  <option key={cropType} value={cropType}>
+                    {cropType}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <button
+            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+            onClick={sendRecommendationRequest}
+          >
+            Get Recommendation
+          </button>
+        </form>
+        {loading && <p className="text-gray-600">Loading...</p>}
+        {error && <p className="text-red-600">{error}</p>}
+        {recommendation && (
+          <p className="text-gray-600">
+            Sell your crop at the predicted price of ₹255 per kg higher than historical average of 230.20
+          </p>
+        )}
+      </div>
+    </Layout>
+  );
+};
+
+export default RecommendationSystem;

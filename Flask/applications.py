@@ -418,13 +418,30 @@ def retrain_model():
         print(f"JSON Decode Error: {e}")  # Capture decoding errors
         return jsonify({"error": "Invalid JSON data"}), 400
     return jsonify({'message': 'Data received successfully'})
-    
-@app.route('/recommendations', methods=['POST'])
+
+@app.route('/recommendations', methods=['GET'])
 def recommendations():
-    data = request.get_json()
-    crop_type = data.get('crop_type')
-    state = data.get('state')
-    city = data.get('city')
+    state="Maharashtra"
+    city="Pune"
+    crop_type="Rice"
+
+    # data = request.get_json()
+    # state = data.get('state', 'Maharashtra')
+    # city = data.get('city', 'Pune')
+    # crop_type = data.get('crop_type', 'Rice')
+    # date = data.get('date', '2024-09-18')  # Example date
+    # season = data.get('season', 'Kharif')
+    # temperature = data.get('temperature', 30.0)
+    # rainfall = data.get('rainfall', 100.0)
+    # supply_volume = data.get('supply_volume', 1000.0)
+    # demand_volume = data.get('demand_volume', 800.0)
+    # transport_cost = data.get('transport_cost', 500.0)
+    # fertilizer_usage = data.get('fertilizer_usage', 50.0)
+    # pest_infestation = data.get('pest_infestation', 0.1)
+    # market_competition = data.get('market_competition', 0.5)
+    
+
+
 
     if not all([crop_type, state, city]):
         return jsonify({'error': 'Missing input parameters'}), 400
@@ -438,9 +455,31 @@ def recommendations():
     if filtered_df.empty:
         return jsonify({'error': 'No data found for the given location and crop'}), 404
 
+    # Prepare input data for prediction
+    input_data = {
+        'date':'2024-09-18',
+        'state':'Maharashtra',
+        'city':'Pune',
+        'crop_type':'Rice',
+        'season': 'Kharif',
+        'temperature':30.0,
+        'rainfall': 100.0,
+        'supply_volume':1089.67,
+        'demand_volume':807.0,
+        'transport_cost':578.0,
+        'fertilizer_usage': 70,
+        'pest_infestation': 0.34,
+        'market_competition':0.6}
+
     # Use the existing predict function to get the predicted price
-    prediction_response = predict()
-    predicted_price = prediction_response.get_json()['predicted_price']
+    # prediction_response = predict()
+    # predicted_price = prediction_response.get_json()['predicted_price']
+
+    prediction_response = request.post('http://localhost:5000/predict', json=input_data)
+    if prediction_response.status_code != 200:
+        return jsonify({'error': 'Failed to get prediction'}), prediction_response.status_code
+
+    predicted_price = prediction_response.json().get('predicted_price')
 
     # Generate recommendations
     historical_avg = filtered_df['Price (₹/ton)'].mean()
@@ -449,11 +488,12 @@ def recommendations():
     else:
         recommendation = f'Hold onto your {crop_type} for better prices (predicted price of ₹{predicted_price:.2f} is lower than historical average of ₹{historical_avg:.2f}).'
 
-    return jsonify({
-        'recommendation': recommendation,
-        'predicted_price': predicted_price,
-        'historical_average': historical_avg
-    })
+    # return jsonify({
+    #     'recommendation': recommendation,
+    #     'predicted_price': predicted_price,
+    #     'historical_average': historical_avg
+    # })
+    print(recommendation)
 
 if __name__=="__main__":
     app.run(host="localhost", port=5000, debug=True)

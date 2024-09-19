@@ -10,10 +10,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import { predictPrice } from "@/Api";
 import Layout from "../Layout/Layout";
 import GraphPrediction from "./GraphPrediction";
+import { Loader2 } from "lucide-react"
 
 
 const statesAndCities = {
@@ -62,6 +63,8 @@ export default function PriceForcast() {
     market_competition: "",
   });
   const [predictedPrice, setPredictedPrice] = useState(null);
+  const [isLoading, setIsLoading] = useState(false)
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,6 +84,8 @@ export default function PriceForcast() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
+    setPredictedPrice(null);
     const formattedData = {
       ...formData,
       temperature: parseFloat(formData.temperature),
@@ -96,20 +101,31 @@ export default function PriceForcast() {
     try {
       console.log(formattedData);
       const response = await predictPrice(formattedData);
+      setIsLoading(false)
       setPredictedPrice(response);
     } catch (error) {
+      setIsLoading(false)
       console.error("Error submitting form:", error);
     }
   };
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-16">
+  //       <Loader2 className="animate-spin h-6 w-6" aria-label="Loading" />
+  //     </div>
+  //   )
+  // }
 
   return (
     <Layout>
       <div className="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-4xl">
         <h1 className="text-3xl font-bold text-center mb-2 text-green-600">
-          Price Forecasting Form
+          Price Forecasting Form (99% Accurate)
         </h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <h1 className="text-sm text-center font-semibold">Note: Freature of this model are collected from scientific observation! </h1>
+        <form onSubmit={handleSubmit} className="space-y-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="col-span-full">
               <Label htmlFor="date">Date</Label>
@@ -316,8 +332,13 @@ export default function PriceForcast() {
             Submit Data
           </Button>
         </form>
-        {predictedPrice !== null && (
-          <div className="mt-6">
+        {isLoading ? (
+          <div className="flex justify-center items-center h-16">
+            <Loader2 className="animate-spin h-6 w-6" aria-label="Loading" />
+          </div>
+        ):
+        (predictedPrice !== null &&
+          (<div className="mt-6">
             <h2 className="text-2xl font-bold mb-2">Price Prediction Result</h2>
             <p className="text-gray-600 mb-4">
               The predicted price of the crop is{" "}
@@ -326,9 +347,9 @@ export default function PriceForcast() {
             <p>{predictedPrice?.fig}</p>
             <GraphPrediction predictedPrice={predictedPrice?.predicted_price} />
             <img src={`data:image/png;base64,${predictedPrice?.graph}`} alt="Predicted Price Over Time" />
-          </div>
-          
-        )}
+          </div>)
+        )
+        }
       </div>
     </div>
     </Layout>

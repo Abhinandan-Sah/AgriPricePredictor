@@ -34,7 +34,7 @@ const cards = [
   },
   {
     title: "Advanced Analytics",
-    description: "ARIMA models for price forecasting and trend analysis"
+    description: "Prophet and Random Forest models for price forecasting and trend analysis"
   }
 ]
 
