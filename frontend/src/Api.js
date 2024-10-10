@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080/auth",
+  baseURL: "https://agripricepredictor.onrender.com/auth",
 });
 
 export const googleAuth = async (code) => {
