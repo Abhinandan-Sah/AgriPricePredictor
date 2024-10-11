@@ -8,3 +8,4 @@ setuptools
 prophet
 cloudpickle==2.2.1
 CORS
+flask_cors
