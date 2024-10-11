@@ -7,3 +7,4 @@ seaborn
 setuptools
 prophet
 cloudpickle==2.2.1
+CORS
