@@ -21,7 +21,7 @@ import gzip
 
 applications = Flask(__name__)
 app=applications
-CORS(applications, resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(applications, resources={r"/*": {"origins": "https://agripricepredictor-1.onrender.com"}})
 
 
 df = pd.read_csv('Model/crop_price.csv')
