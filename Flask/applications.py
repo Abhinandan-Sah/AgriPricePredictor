@@ -21,7 +21,7 @@ import gzip
 
 applications = Flask(__name__)
 app=applications
-CORS(applications, resources={r"/*": {"origins": "https://agripricepredictor-1.onrender.com"}})
+CORS(applications, resources={r"/*": {"origins": "*"}})
 
 
 df = pd.read_csv('Model/crop_price.csv')
@@ -59,7 +59,8 @@ def test():
 # Home page with all visualizations
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return "success"
+    # return render_template('index.html')
 
 # Route to display EDA summary statistics
 @app.route('/stats')
