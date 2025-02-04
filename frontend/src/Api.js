@@ -24,7 +24,8 @@ export const signinAuth = async(data)=>{
 
 // Create an axios instance for Flask API
 const flask = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://agripricepredictor-g8ckhgb7afc9d2bz.centralindia-01.azurewebsites.net/",
+  // baseURL: "http://localhost:5000/",
   headers: {
     'Content-Type': 'application/json',
   },
